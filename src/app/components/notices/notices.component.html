@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!--Carga de archivos css-->
+
+
+
+    <title>Badianus</title>
+</head>
+<body>
+    
+
+    <div class="container pt-4" *ngIf="range">
+        <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModalScrollable">Crear Aviso</button>
+    </div>
+  
+      
+      <!-- Modal -->
+      <div class="modal" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalCenteredLabel">Añadir Aviso</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <form #noticeForm="ngForm" (ngSubmit)="onSubmit(noticeForm)">
+                    <div class="container">
+                    <input type="text" class="form-control" #title="ngModel" [(ngModel)]="notice.title" placeholder="Título" name = "title" required>
+                    <p>
+                    <span class="text-danger" *ngIf="title.touched && !title.valid">El Título es obligatorio</span>
+                    <p>
+                    <textarea class="form-control" #message="ngModel" [(ngModel)]="notice.message" rows="3" placeholder= "Aviso" name="message" required></textarea>
+                    <span class="text-danger" *ngIf="message.touched && !message.valid">El aviso es obligatorio</span>
+                    <p>
+                    <input class ="btn btn-primary" type="submit" value="Añadir" [disabled]="!noticeForm.form.valid">
+ 
+                </div>
+            </form>
+            <div id="alert" class="alert alert-success" role="alert" *ngIf="status == 'success'">
+                <strong>Listo!</strong> El aviso se añadio con éxito.
+            </div>
+            <div class="alert alert-danger" role="alert" *ngIf="status == 'failed'">
+                <strong>Oh no!</strong> El aviso no se pudo añadir.
+            </div>    
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Regresar</button>
+              
+              </div>
+          </div>
+        </div>
+      </div>
+      <!-- /Modal -->      
+    <div class="container pt-4" *ngFor="let notice of notices" [attr.id]="notice._id">
+    <div class="card" >
+        <div class="card-header">
+          Aviso #{{notice._id}}
+        </div>
+        <div class="card-body">
+            
+          <h4 class="card-title">{{notice.title}}</h4>
+          <small class="text-muted">{{notice.date}}</small>
+          <p class="card-text">{{notice.message}}</p>
+          <button (click)=deleteNotice(notice._id) type="button" class="btn btn-outline-danger" *ngIf="range" >Eliminar</button>
+        </div>
+      </div>
+    </div>
+    
+
+    
+
+
+<!--Carga de archivos JS-->

@@ -1,1 +1,375 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face{
+  font-family: "poppins";
+  src:url("./assets/fonts/poppins.ttf");
+}
+html {
+    font-size: 15px; }
+  
+  body {
+    color: #111111; 
+  font-family: "poppins";}
+  
+  .header {
+    background: #FFFFFF;
+    color: #111111;
+    padding: 0.5rem 0;
+    -webkit-box-shadow: 0px 14px 10px -6px #000000;
+    box-shadow: 0px 14px 10px -6px #000000;
+    position: relative;
+    z-index: 1; }
+  
+  .header .container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between; }
+  
+  .header .login i {
+    font-size: 1.7rem;
+    padding-top: 0.5rem;
+    color: #111111; }
+  
+  .header .logo img {
+    width: 100px;
+    height: auto; }
+  
+  .header .button-menu img {
+    padding-bottom: 1rem; }
+  
+  /* boton buscar estilo */
+  .button-menu {
+    border: 0;
+    font-size: 2rem;
+    margin: 0;
+    background: transparent;
+    color: #111111; }
+  
+  #principal-menu {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 100%;
+            flex: 1 1 100%; }
+  
+  #principal-menu ul {
+    padding: 0;
+    list-style: none;
+    margin: 1rem 0 0 0; }
+  
+  #principal-menu ul a {
+    display: block;
+    padding: .8rem 0;
+    text-align: center;
+    color: #16505E;
+    text-transform: uppercase;
+    border-top: 1px solid #3F6E81;
+    text-decoration: none; }
+  
+  #principal-menu ul a:hover,
+  #principal-menu ul li.active a {
+    color: #16505E; }
+  
+  .arrow-home a {
+    display: inline-block;
+    color: #111111;
+    font-size: 2rem;
+    -webkit-animation: arrow-animated 1.5s ease-in-out infinite;
+            animation: arrow-animated 1.5s ease-in-out infinite;
+    margin-bottom: 2rem; }
+  
+  .buscados .container {
+    padding-right: 1rem;
+ }
+  
+  .buscados .owl-nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin: 1rem 0; }
+  
+  .buscados .owl-prev,
+  .buscados .owl-next {
+    font-size: 3rem;
+    margin: 0 2rem;
+    color: #16505E;
+    width: 40px; }
+  
+  .testimonials-welcome .owl-nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin: 1rem 0; }
+  
+  .testimonials-welcome .owl-prev,
+  .testimonials-welcome .owl-next {
+    font-size: 3rem;
+    margin: 0 1rem;
+    color: #16505E; }
+  
+  @-webkit-keyframes arrow-animated {
+    from {
+      -webkit-transform: translateY(0);
+              transform: translateY(0); }
+    50% {
+      -webkit-transform: translateY(6px);
+              transform: translateY(6px); }
+    to {
+      -webkit-transform: translateY(0);
+              transform: translateY(0); } }
+  
+  @keyframes arrow-animated {
+    from {
+      -webkit-transform: translateY(0);
+              transform: translateY(0); }
+    50% {
+      -webkit-transform: translateY(6px);
+              transform: translateY(6px); }
+    to {
+      -webkit-transform: translateY(0);
+              transform: translateY(0); } }
+  .footer {
+    background-color: #111111;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: .9rem; }
+  
+  .footer .social-media {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0; }
+  
+  .footer .social-media a {
+    color: #FFFFFF;
+    font-size: 2rem;
+    margin: 0.5rem;
+    opacity: .7; }
+  
+  .footer .social-media a:hover {
+    opacity: 1; }
+  
+  .testimonials-welcome {
+    height: 15vh;
+    color: #FFFFFF;
+    padding-top: 2rem; }
+  
+  .map-responsive {
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
+    height: 0; }
+  
+  .map-responsive iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute; }
+  
+  .testimonial {
+    margin: 0 10px;
+    overflow: hidden; }
+  
+  .testimonial .pic {
+    width: 120px;
+    height: 120px;
+    border: 2px solid #f2f2f2;
+    border-radius: 50%;
+    padding: 5px;
+    margin: 0 auto 25px; }
+  
+  .testimonial .pic img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%; }
+  
+  .testimonial .testimonial-content {
+    padding: 20px 20px 20px 80px;
+    background: #efefef;
+    border-radius: 0 0 0 70px;
+    border-left: 2px solid #444;
+    border-right: 4px solid #1c9690;
+    text-align: right;
+    position: relative; }
+  
+  .testimonial .testimonial-content:before {
+    content: "\f10d";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    position: absolute;
+    top: 0;
+    left: 20px;
+    font-size: 60px;
+    color: #68C9C4; }
+  
+  .testimonial .testimonial-content:after {
+    content: "";
+    border-bottom: 15px solid #efefef;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    position: absolute;
+    top: -15px;
+    left: 46%; }
+  
+  .testimonial .testimonial-title {
+    margin: 0 0 10px 0; }
+  
+  .testimonial .testimonial-title a {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    text-transform: capitalize;
+    text-align: center;
+    display: block; }
+  
+  .testimonial .testimonial-title a:hover {
+    text-decoration: none;
+    color: #1c9690; }
+  
+  .testimonial .description {
+    font-size: 15px;
+    line-height: 24px;
+    color: #555;
+    margin-bottom: 20px;
+    font-style: italic; }
+  
+  .owl-pagination {
+    margin-top: 40px; }
+  
+  .owl-theme .owl-controls .owl-page.active span, .owl-theme .owl-controls.clickable .owl-page:hover span {
+    background: #1c9690; }
+  
+  @media only screen and (max-width: 479px) {
+    .testimonial .testimonial-content {
+      padding: 20px 20px 20px 70px; }
+  
+    .testimonial .testimonial-content::before {
+      font-size: 50px;
+      left: 17px; } }
+  /* Product Grid */
+  .product-grid {
+    padding-bottom: 20px;
+    padding-top: 20px; }
+  
+  .product-grid:hover {
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+  
+  .image {
+    position: relative; }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    -webkit-transition: .5s ease;
+    transition: .5s ease;
+    background-color: rgba(67, 68, 68, 0.7); }
+  
+  .image:hover .overlay {
+    opacity: 1; }
+  
+  .detail {
+    color: #fff;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%); }
+  
+  .buy {
+    background-color: transparent;
+    color: #434444;
+    border-radius: 0;
+    border: 1px solid #434444;
+    width: 100%;
+    margin-top: 20px; }
+  
+  .buy:hover {
+    background-color: #434444;
+    color: #fff; }
+  
+  #accordion {
+    text-align: center; }
+  
+  .arrow-home .arrow img {
+    width: 40px; }
+  
+  .carousel-control-prev-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E"); }
+  
+  .carousel-control-next-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E"); }
+  
+  @media (min-width: 768px) {
+    #principal-menu {
+      height: auto !important;
+      display: block; }
+  
+    #principal-menu ul {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      margin: 0 0 0 0;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center; }
+  
+    #principal-menu ul li a {
+      padding: .2rem;
+      text-transform: none;
+      margin: 0 1rem;
+      border-top: 0;
+      color: #111111;
+      letter-spacing: 4px;
+      -webkit-transition: all .3s ease;
+      transition: all .3s ease; }
+  
+    #principal-menu ul li.active a,
+    #principal-menu ul li a:hover {
+      color: #16505E;
+      border-bottom: 2px solid; }
+  
+    .header .login i {
+      font-size: 1.7rem;
+      padding-top: .2rem;
+      color: #111111;
+      opacity: .8; }
+  
+    .header .logo img {
+      width: 150px;
+      height: auto; }
+  
+    .arrow-home .arrow img {
+      width: 70px; }
+  
+    .arrow-home a {
+      margin-bottom: 1.5rem; }
+  
+    .buscados .owl-prev,
+    .buscados .owl-next {
+      margin: 0 2rem;
+      width: 70px; } }
+  
+  /*# sourceMappingURL=estilos.css.map */

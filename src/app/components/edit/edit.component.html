@@ -1,0 +1,74 @@
+
+
+
+
+<div class="container pt-4">
+<form #productForm="ngForm" (ngSubmit)="onSubmit(productForm)">
+    <div class="container">
+        Título
+    <input type="text" class="form-control" #title="ngModel" [(ngModel)]="product.title" placeholder="Título" name = "title" required>
+    <p>
+        <p>
+            <label>Marca </label>
+            <select class="custom-select" #brand='ngModel' [(ngModel)]="product.brand" name="brand" required placeholder ="Rango">
+                
+                <option value="Raramuri">Raramuri</option>
+                <option value="Del Indio Papago">Del Indio Papago</option>
+                <option value="Body Sweet">Body Sweet</option>
+                <option value="Xtermin Piojos">Xtermin Piojos</option>
+              </select>
+             
+    <p>
+        <label>Tipo de Producto  </label>
+        <select class="custom-select" #type='ngModel' [(ngModel)]="product.type" name="type" required placeholder ="Rango">
+            
+            <option value="Shampoo">Shampoo</option>
+            <option value="Acondicionador">Acondicionador</option>
+            <option value="Crema">Crema</option>
+            <option value="Gel Fijador">Gel Fijador</option>
+            <option value="Sílica">Sílica</option>
+            <option value="Loción Capilar">Loción Capilar</option>
+          </select>
+          
+<p>
+            <input type="text" class="form-control" #size="ngModel" [(ngModel)]="product.size" placeholder="Tamaño" name = "size" required>
+            <p>
+            <p>
+              <label>Dirección url de compra</label>
+              <input type="text" class="form-control" #link="ngModel" [(ngModel)]="product.link" placeholder="ej: https://badianus.com/producto/acondicionador-del-indio-papago-argan/" name = "link" required>
+            <p>
+            <p>
+              
+    <textarea class="form-control" #description="ngModel" [(ngModel)]="product.description" rows="3" placeholder= "Descripción" name="description" required></textarea>
+    <p>
+        <textarea class="form-control" #ingredients="ngModel" [(ngModel)]="product.ingredients" rows="3" placeholder= "Ingredientes" name="ingredients" required></textarea>
+        <p>
+          <div class="form-check">
+            Entra en la categoría de los productos más buscados ?
+            <br>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" (click)="mostWantedTrue()">
+              <label class="form-check-label" for="inlineRadio1">Si</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" (click)="mostWantedFalse()" >
+              <label class="form-check-label" for="inlineRadio2">No</label>
+            </div>
+          </div>
+          <p>
+            <hr>
+            <label>Imagen </label>
+            <br>
+            <img src="{{url+'product/get-image/'+product.image}}" *ngIf="product.image" style="width: 100px;">
+            <p>
+                <br>
+              
+    <input type="file" #image="ngModel" [(ngModel)]="product.image" name="image" placeholder="Subir Imagen" (change)= "fileChangeEvent($event)" required>
+
+    <p>
+      <p>
+    <input class ="btn btn-primary" type="submit" value="Actualizar">
+
+</div>
+</form>
+</div>

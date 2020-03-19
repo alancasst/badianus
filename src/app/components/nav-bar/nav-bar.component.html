@@ -1,0 +1,35 @@
+<section class="welcome">
+    <header class="header navbar-fixed-top" role="banner">
+    <div class="container">
+      <button type="button" class="button-menu d-md-none" data-toggle="collapse" data-target="#principal-menu"><a ><fa-icon [icon]="faBars"></fa-icon></a></button>
+    <a href="index.html" class="logo">
+        <img src="assets/images/badianus-logo.png" alt="">
+    </a>
+    <a class="login d-md-none" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-sign-in-alt"></i></a>
+
+    <label *ngIf="display" class="d-none d-md-block pt-3">-Beneficios y ventajas de lo natural-</label>
+<div *ngIf="user && isLogged()">
+        <p class="font-weight-normal pt-3" style="color: #16505E;" >{{user.name}} {{user.lastname}}</p>
+      </div>
+    
+    <nav id="principal-menu" class="collapse pt-2">
+        <ul>
+            <li *ngIf="display"><a [routerLink]="['/']">Inicio</a></li>
+            <li *ngIf="display"><a [routerLink]="['productos']">Productos</a></li>
+            <li *ngIf="display"><a [routerLink]="['testimonios']">Testimonios</a></li>
+            <li *ngIf="display"><a [routerLink]="['contacto']">Contacto</a></li>
+            <li *ngIf="isLogged()"><a [routerLink]="['avisos']">Avisos</a></li>
+            <li *ngIf="isLogged()"><a [routerLink]="['documentos']">Documentos</a></li>
+            <li *ngIf="isLogged() && range"><a [routerLink]="['productos-admin']">Productos</a></li>
+            <li *ngIf="isLogged() && range"><a [routerLink]="['usuarios']">Usuarios</a></li>
+            <li *ngIf="isLogged() && range"><a [routerLink]="['testimonios-admin']">Testimonios</a></li>
+            <li *ngIf="isLogged() && range "><a [routerLink]="['reseñas']">Reseñas</a></li>
+              <li *ngIf="display"><a [routerLink]="['iniciar-sesion']"><fa-icon [icon]="faSignIn"></fa-icon></a></li>
+            <li  *ngIf="isLogged()"><a (click)="onLogOutClick()">Cerras Sesión</a></li>
+            
+        </ul>
+    </nav>
+</div>
+</header>
+</section>
+

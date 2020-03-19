@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!--Carga de archivos css-->
+   
+
+
+    <title>Badianus</title>
+</head>
+<body>
+    
+<section class="welcome">
+    <div class="container pt-4">
+        <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModalScrollable">Añadir Testimonio</button>
+    </div>
+  
+      
+      <!-- Modal -->
+      <div class="modal" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalCenteredLabel">Añadir Testimonio</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <form #testimonialForm="ngForm" (ngSubmit)="onSubmit(testimonialForm)">
+                    <div class="container">
+                    <input type="text" class="form-control" #name="ngModel" [(ngModel)]="testimonial.name" placeholder="Nombre" name = "name" required>
+                    <p>
+                    <span class="text-danger" *ngIf="name.touched && !name.valid">El nombre es obligatorio</span>
+                    <p>
+                    <textarea class="form-control" #text="ngModel" [(ngModel)]="testimonial.text" rows="3" placeholder= "Testimonio" name="text" required></textarea>
+                    <span class="text-danger" *ngIf="text.touched && !text.valid">El testimonio es obligatorio</span>
+                    <p>
+                    <input type="file" #image="ngModel" [(ngModel)]="testimonial.image" name="image" placeholder="Subir Imagen" (change)= "fileChangeEvent($event)" required>
+                    <p>
+                      <span class="text-danger" *ngIf="image.touched && !image.valid">La imagen  es obligatoria</span>
+                    <p>
+                    <input class ="btn btn-primary" type="submit" value="Añadir" [disabled]="!testimonialForm.form.valid">
+                
+                </div>
+                </form>
+                <div id="alert" class="alert alert-success" role="alert" *ngIf="status == 'success'">
+                    <strong>Listo!</strong> El testimonio se subio con éxito.
+                </div>
+                <div class="alert alert-danger" role="alert" *ngIf="status == 'failed'">
+                    <strong>Oh no!</strong> El testimonio no se pudo subir.
+                </div>
+                 
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Regresar</button>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+    <table class="table table-responsive pt-4"><!-- ... -->
+    <thead>
+        <tr>
+            <th>Imagen</th>
+            <th>Nombre</th>
+            <th>Testimonio</th>
+            <th>Borrar</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let testimonial of testimonials" [attr.id]="testimonial._id">
+        <tr>
+            <td><img src="{{url+'testimonial/get-image/'+testimonial.image}}" *ngIf="testimonial.image" style="width: 100px;"></td>
+            <td>{{testimonial.name}}</td>
+            <td> {{testimonial.text}}</td>
+ 
+            <td><button (click)="setConfirm(true)"><fa-icon [icon]="faTrash"></fa-icon></button>
+              <p *ngIf= "confirm==true">
+              <button type="button" class="btn btn-outline-secondary btn-sm" (click)="setConfirm(false)"> Cancelar</button>
+              
+              <button type="button" class="btn btn-outline-danger btn-sm mt-2" (click)=deleteTestimonial(testimonial._id)>Eliminar</button>
+            </p>
+
+              
+            </td>                  
+        </tr>
+     
+            </table>
+           
+  </div>
+  
+

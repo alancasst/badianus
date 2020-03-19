@@ -1,0 +1,67 @@
+
+
+    <div class="container" *ngIf="product">
+        <div class="row">
+	<div class="col-12 col-lg-6 pt-4" >
+                        <h2 class="text-left"> {{product.title}} </h2>
+						<img  src="{{url+'product/get-image/'+product.image}}" style="width: 60vh;">
+            </div>
+            <div class="col-6 pt-5">				
+                
+                <p>{{product.description}}</p>
+                <label class="text-secondary"><fa-icon [icon]="faLeaf"></fa-icon> Ingredientes: </label> <p>{{product.ingredients}}</p>
+                <label class="text-secondary"><fa-icon [icon]="faRuler"></fa-icon> Presentación: </label> <p>{{product.size}}</p>
+                <label class="text-secondary"><fa-icon [icon]="faBrand"></fa-icon> Marca: </label> <p>{{product.brand}}</p>
+                <label class="text-secondary"><fa-icon [icon]="faCategorie"></fa-icon> Categoría: </label> <p>{{product.type}}</p>
+                <button class="btn btn-primary"> <a class="text-white" href="{{product.link}}">Ver Precio</a></button>
+            </div>
+            </div>
+            <h3 class="pt-4">Más Información</h3>
+            <img src="{{url+'product/get-image/'+product.image2}}" *ngIf="product.image2" class="w-100">
+            <hr>
+
+        
+         <!--Reseñas-->
+         <div class="jumbotron m-3"  *ngFor="let review of reviews" [attr.id]="review._id">
+           
+            <p>
+              {{review.date | date:'shortDate'}}
+              <br>
+              {{review.text}}</p>
+             <hr class="my-2">  
+             <p> <span class="fa fa-star checked"></span>
+                 <span class="fa fa-star checked"></span>
+                 <span class="fa fa-star checked"></span>
+                 <span class="fa fa-star checked"></span>
+                 <span class="fa fa-star checked"></span>
+                 <fa-icon style="font-size: 2rem;" [icon]="faUser"></fa-icon> {{review.name}}
+                 <br>
+               
+             </p>
+           </div>
+        </div>
+        <div class="container">
+            <form #reviewForm="ngForm" (ngSubmit)="onSubmit(reviewForm)">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Cuéntanos tu experiencia</label>
+                  </div>
+                <div class="form-group row">
+                  <div class="col-12">
+                    <input type="text" class="form-control"  placeholder="Nombre" #name="ngModel" [(ngModel)]="review.name" name = "name" required>
+                    <span class="text-danger" *ngIf="name.touched && !name.valid">El nombre es obligatorio</span>
+                  </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-12">
+                    <textarea class="form-control" rows="3" placeholder="Reseña" #text="ngModel" [(ngModel)]="review.text" name = "text" required></textarea>
+                    <span class="text-danger" *ngIf="text.touched && !text.valid">La reseña es obligatoria</span>
+                </div>
+                  </div>
+                  <div id="alert" class="alert alert-success" role="alert" *ngIf="status == 'success'">
+                    <strong>Listo!</strong> Reseña Publicada.
+                </div>
+                <div class="form-group" style="display: flex; justify-content: flex-end;">
+                    <input class ="btn btn-primary" type="submit" value="Añadir" [disabled]="!reviewForm.form.valid">
+                </div>
+              </form>
+        </div>

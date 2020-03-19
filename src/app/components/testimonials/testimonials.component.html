@@ -1,0 +1,32 @@
+    
+    
+    
+    <section class="testimonials-welcome">
+        
+        <div class="container" *ngFor="let testimonial of testimonials| paginate: {itemsPerPage:1,currentPage: pageActual}">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="testimonial-slider" >
+                        <div class="testimonial">
+                            <div class="pic">
+                                <img src="{{url+'testimonial/get-image/'+testimonial.image}}" *ngIf="testimonial.image">
+                            </div>
+                            <div class="testimonial-content">
+                                <h3 class="testimonial-title"><a href="#">{{testimonial.name}}</a></h3>
+                                <p class="description">
+                                {{testimonial.text}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <pagination-controls class="pt-3" style="display: flex; justify-content: center;" (pageChange)="pageActual = $event"></pagination-controls>
+        </div>
+    </section>
+    <div style="height:70vh;"></div>
+
+    
+    
+<!--Carga de archivos JS-->
+    

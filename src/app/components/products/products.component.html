@@ -1,0 +1,65 @@
+
+     <div class="container pt-4" >
+      <div class="row">
+        <div class = "col-6 col-lg-3">
+    <div class="card" >
+      <article class="card-group-item" >
+        <header class="card-header"><h6 class="title">Marca </h6></header>
+        <div class="filter-content">
+          <div class="list-group list-group-flush">
+            <button type="button" (click)="getVal('Del Indio Papago')" class="list-group-item text-primary" >Del Indio Papago <span class="float-right badge badge-light round"></span></button>
+            <button class="list-group-item text-primary" (click)="getVal('Raramuri')">Raramuri  <span class="float-right badge badge-light round"></span>  </button>
+            <button type="button" class="list-group-item text-primary" (click)="getVal('Body Sweet')">Body Sweet <span class="float-right badge badge-light round"></span>  </button> 
+            <button  type="button" class="list-group-item text-primary"  (click)="getVal('Xtermin Piojos')">Xtermin Piojos <span class="float-right badge badge-light round"></span>  </button>
+          </div>  <!-- list-group .// -->
+        </div>
+      </article> <!-- card-group-item.// -->
+      <article class="card-group-item " >
+        <header class="card-header"><h6 class="title">Categoría </h6></header>
+        <div class="filter-content">
+          <div class="list-group list-group-flush">
+            <button type="button"  (click)="getType('Acondicionador')" class="list-group-item text-primary"> Acondicionador <span class="float-right badge badge-light round"></span> </button>
+            <button class="list-group-item text-primary" (click)="getType('Crema')">Crema<span class="float-right badge badge-light round"></span>  </button>
+            <button class="list-group-item text-primary" (click)="getType('Gel Fijador')">Gel Fijador<span class="float-right badge badge-light round"></span>  </button>
+            <button class="list-group-item text-primary" (click)="getType('Loción Capilar')" >Loción Capilar <span class="float-right badge badge-light round"></span></button>
+            <button class="list-group-item text-primary" (click)="getType('Shampoo')">Shampoo <span class="float-right badge badge-light round"></span></button>
+            <button  class="list-group-item text-primary" (click)="getType('Sílica')"> Sílica <span class="float-right badge badge-light round"></span></button>
+          </div>  <!-- list-group .// -->
+        </div>
+      </article>
+    </div>
+  </div>
+        <div class="col-6 col-lg-9 ">
+          <div class="row">
+    	<div class="col-12 col-lg-4 product-grid" *ngFor="let product of products | paginate: {itemsPerPage:6,currentPage: pageActual} " [attr.id]="product._id">
+				<div class="image">
+					<a [routerLink]="['/detalles',product._id]">
+						<img src="{{url+'product/get-image/'+product.image}}" *ngIf="product.image" class="w-100">
+						<div class="overlay">
+							<div class="detail">Ver Detalles</div>
+						</div>
+					</a>
+				</div>
+				<h5 class="text-center">{{product.title}}</h5>
+                <a data-toggle="modal" [attr.data-target]="product._id" class="btn buy">Ver detalles</a>
+            </div>
+          </div>
+
+            
+          </div>
+        </div>
+     </div>
+     <div class="container pt-4" style="display: flex; justify-content: center;"> <pagination-controls (pageChange)="pageActual = $event"></pagination-controls></div>
+       
+
+
+   
+      
+   
+    
+
+
+    
+
+
+<!--Carga de archivos JS-->

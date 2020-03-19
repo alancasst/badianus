@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!--Carga de archivos css-->
+   
+
+
+    <title>Badianus</title>
+</head>
+<body>
+    
+<section class="welcome" >
+    
+    <div class="container" >
+        <table class="table table-responsive pt-4"><!-- ... -->
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Reseña</th>
+                <th>Producto</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let review of reviews" [attr.id]="review._id">
+            <tr>
+                <td>{{review.name}}</td>
+                <td>{{review.text}}</td>
+                <td>{{review.product}}</td>
+                <td><button (click)="setConfirm(true)"><fa-icon [icon]="faTrash"></fa-icon></button>
+                    <p *ngIf= "confirm==true">
+                    <button type="button" class="btn btn-outline-secondary btn-sm" (click)="setConfirm(false)"> Cancelar</button>
+                    
+                    <button type="button" class="btn btn-outline-danger btn-sm" (click)=deleteReview(review._id)>Eliminar </button>
+                  </p>
+      
+                    
+                  </td>          
+            </tr>
+        </table>
+      </div>
+    

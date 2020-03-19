@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!--Carga de archivos css-->
+   
+
+
+    <title>Badianus</title>
+</head>
+<body>
+    
+<section class="welcome">
+
+    <div class="container pt-4">
+        <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModalScrollable">Añadir Producto</button>
+    </div>
+  
+      
+      <!-- Modal -->
+      <div class="modal" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalCenteredLabel">Añadir Producto</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <form #productForm="ngForm" (ngSubmit)="onSubmit(productForm)">
+                    <div class="container">
+                    <input type="text" class="form-control" #title="ngModel" [(ngModel)]="product.title" placeholder="Título" name = "title" required>
+                    <p>
+                    <span class="text-danger" *ngIf="title.touched && !title.valid">El Título es obligatorio</span>
+                        <p>
+                            <label>Marca </label>
+                            <select class="custom-select" #brand='ngModel' [(ngModel)]="product.brand" name="brand" required placeholder ="Rango">
+                                
+                                <option value="Raramuri">Raramuri</option>
+                                <option value="Del Indio Papago">Del Indio Papago</option>
+                                <option value="Body Sweet">Body Sweet</option>
+                                <option value="Xtermin Piojos">Xtermin Piojos</option>
+                              </select>
+                              <span class="text-danger" *ngIf="brand.touched && !brand.valid">La marca es obligatoria</span>
+                <p>
+                    <p>
+                        <label>Tipo de Producto  </label>
+                        <select class="custom-select" #type='ngModel' [(ngModel)]="product.type" name="type" required placeholder ="Rango">
+                            
+                            <option value="Shampoo">Shampoo</option>
+                            <option value="Acondicionador">Acondicionador</option>
+                            <option value="Crema">Crema</option>
+                            <option value="Gel Fijador">Gel Fijador</option>
+                            <option value="Sílica">Sílica</option>
+                            <option value="Loción Capilar">Loción Capilar</option>
+                          </select>
+                          <span class="text-danger" *ngIf="type.touched && !type.valid">El tipo de producto es obligatorio</span>
+                          
+            <p>
+                            <input type="text" class="form-control" #size="ngModel" [(ngModel)]="product.size" placeholder="Tamaño" name = "size" required>
+                            <p>
+                            <span class="text-danger" *ngIf="size.touched && !size.valid">El tamaño es obligatorio</span>
+                            <p>
+                              <label>Dirección url de compra</label>
+                              <input type="text" class="form-control" #link="ngModel" [(ngModel)]="product.link" placeholder="ej: https://badianus.com/producto/acondicionador-del-indio-papago-argan/" name = "link" required>
+                            <p>
+                            <span class="text-danger" *ngIf="link.touched && !link.valid">La dirección es obligatoria</span>
+                            <p>
+                              
+                    <textarea class="form-control" #description="ngModel" [(ngModel)]="product.description" rows="3" placeholder= "Descripción" name="description" required></textarea>
+                    <span class="text-danger" *ngIf="description.touched && !description.valid">La Descripción es obligatoria</span>
+                    <p>
+                        <textarea class="form-control" #ingredients="ngModel" [(ngModel)]="product.ingredients" rows="3" placeholder= "Ingredientes" name="ingredients" required></textarea>
+                        <span class="text-danger" *ngIf="ingredients.touched && !ingredients.valid">Los Ingredientes son obligatorios</span>
+                        <p>
+                          <input type="file" #image2="ngModel" [(ngModel)]="product.image2" name="image2" placeholder="Subir Imagen" (change)= "fileChangeEvent2($event)" required>
+                          <p>
+                          <div class="form-check">
+                            Entra en la categoría de los productos más buscados ?
+                            <br>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" (click)="mostWantedTrue()">
+                              <label class="form-check-label" for="inlineRadio1">Si</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" (click)="mostWantedFalse()" checked>
+                              <label class="form-check-label" for="inlineRadio2">No</label>
+                            </div>
+                          </div>
+                          <p>
+                            <hr>
+                            <label>Imagen </label>
+                            <br>
+                              
+                    <input type="file" #image="ngModel" [(ngModel)]="product.image" name="image" placeholder="Subir Imagen" (change)= "fileChangeEvent($event)" required>
+                    <p>
+                      <span class="text-danger" *ngIf="image.touched && !image.valid">La imagen  es obligatoria</span>
+                    <p>
+                      <div id="alert" class="alert alert-success" role="alert" *ngIf="status == 'success'">
+                        <strong>Listo!</strong> El producto se subio con éxito.
+                    </div>
+                    <input class ="btn btn-primary" type="submit" value="Añadir" [disabled]="!productForm.form.valid">
+                
+                </div>
+                </form>
+              
+                <div class="alert alert-danger" role="alert" *ngIf="status == 'failed'">
+                    <strong>Oh no!</strong> El producto no se pudo subir.
+                </div>
+                 
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Regresar</button>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+    <table class="table table-responsive pt-4"><!-- ... -->
+    <thead>
+        <tr>
+            <th>Imagen</th>
+            <th>Título</th>
+            <th>Descripción</th>
+            <th>Marca</th>
+            <th>Tipo de Producto</th>
+            <th>Ingredientes</th>
+            <th>Tamaño</th>
+            <th>Más Buscados</th>
+            <th>Editar</th>
+            <th>Borrar</th>            
+        </tr>
+    </thead>
+    <tbody *ngFor="let product of products" [attr.id]="product._id">
+        <tr>
+            <td><img src="{{url+'product/get-image/'+product.image}}" *ngIf="product.image" style="width: 100px;"></td>
+            <td >{{product.title}}</td>
+            <td> {{product.description}}</td>
+            <td> {{product.brand}}</td>
+            <td> {{product.type}}</td>
+            <td> {{product.ingredients}}</td>
+            <td> {{product.size}}</td>
+            <td> {{product.wanted}}</td>
+
+          
+            
+            <td><button [routerLink]="['/editar',product._id]"><fa-icon [icon]="faEdit"></fa-icon></button></td>
+            <td><button (click)="setConfirm(true)"><fa-icon [icon]="faTrash"></fa-icon></button>
+              <p *ngIf= "confirm==true">
+              <button type="button" class="btn btn-outline-secondary btn-sm" (click)="setConfirm(false)"> Cancelar</button>
+              
+              <button type="button" class="btn btn-outline-danger btn-sm mt-2" (click)=deleteProduct(product._id)>Eliminar</button>
+            </p>
+
+              
+            </td>                  
+        </tr>
+     
+            </table>
+           
+  </div>
+  
+
+
