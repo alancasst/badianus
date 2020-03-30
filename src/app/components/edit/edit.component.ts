@@ -55,7 +55,7 @@ export class EditComponent implements OnInit {
   
   }
 
-  onSubmit(){
+  onSubmit(arg){
     this._productService.updateProduct(this.product).subscribe(
       response=>{
         if (response.product){
@@ -68,7 +68,7 @@ export class EditComponent implements OnInit {
               setTimeout(function() {
               
                 $('.alert').fadeOut('fast');
-                location.href="http://localhost:4200/productos-admin";
+                location.href="https://badianus-bbadd.web.app/productos-admin";
             }, 1500);
            
              
@@ -79,7 +79,7 @@ export class EditComponent implements OnInit {
             setTimeout(function() {
             
               $('.alert').fadeOut('fast');
-              location.href="http://localhost:4200/productos-admin";
+              location.href="https://badianus-bbadd.web.app/productos-admin";
           }, 1500);
          
           }

@@ -56,7 +56,7 @@ getCurrentUser(){
     console.log("entra a falso bro");
        return false;
    }else{
-    console.log("entra a true");
+  
        return true;
       
    }

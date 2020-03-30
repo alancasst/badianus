@@ -54,7 +54,7 @@ export class ReviewsComponent implements OnInit {
       response =>{
         if (response.review){
           console.log("borrado");
-          location.href="http://localhost:4200/reseñas";
+          location.href="https://badianus-bbadd.web.app/reseñas";
         }
       }
      )

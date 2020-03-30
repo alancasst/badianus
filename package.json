@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:prod": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -15,6 +16,7 @@
     "@angular/common": "~9.0.0",
     "@angular/compiler": "~9.0.0",
     "@angular/core": "~9.0.0",
+    "@angular/fire": "^5.4.2",
     "@angular/forms": "~9.0.0",
     "@angular/platform-browser": "~9.0.0",
     "@angular/platform-browser-dynamic": "~9.0.0",
@@ -28,6 +30,7 @@
     "bcrypt": "^4.0.1",
     "bootstrap": "^4.4.1",
     "file-system": "^2.2.2",
+    "firebase": "^7.12.0",
     "flash-messages": "0.0.4",
     "jquery": "^3.4.1",
     "ngx-owl-carousel": "^2.0.7",

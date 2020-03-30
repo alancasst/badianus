@@ -12,7 +12,7 @@ import { faBars} from '@fortawesome/free-solid-svg-icons';
 })
 export class NavBarComponent implements OnInit {
   
-  user: Object;
+  user: any;
   range= false;
   display = true;
   email: String;
@@ -45,7 +45,7 @@ export class NavBarComponent implements OnInit {
   }
   onLogOutClick(){
     this._Authservice.logout();
-    location.href="http://localhost:4200/";
+    location.href="https://badianus-bbadd.web.app/";
     
   }
 

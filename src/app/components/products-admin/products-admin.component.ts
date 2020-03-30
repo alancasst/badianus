@@ -44,22 +44,23 @@ export class ProductsAdminComponent implements OnInit {
         if (response.product){
           
           
-          this._uploadService.makeFileRequest(Global.url+"product/upload-file/"+response.product._id,[],this.filestoUpload2,'image2').then((result:any)=>{
+          this._uploadService.makeFileRequest(Global.url+"product/upload-file2/"+response.product._id,[],this.filestoUpload2,'image2').then((result:any)=>{
             this.status = 'success';  
+            this._uploadService.makeFileRequest(Global.url+"product/upload-file/"+response.product._id,[],this.filestoUpload,'image').then((result:any)=>{
+              this.status = 'success';  
+              
+              form.reset();
+              setTimeout(function() {
+              
+                $('.alert').fadeOut('fast');
+                location.href="https://badianus-bbadd.web.app/productos-admin";
+            }, 1500);
+           
+             
+            });
           });
           
-          this._uploadService.makeFileRequest(Global.url+"product/upload-file/"+response.product._id,[],this.filestoUpload,'image').then((result:any)=>{
-            this.status = 'success';  
-            
-            form.reset();
-            setTimeout(function() {
-            
-              $('.alert').fadeOut('fast');
-              location.href="http://localhost:4200/productos-admin";
-          }, 1500);
          
-           
-          });
         
         }else{
             this.status = 'failed';
@@ -102,7 +103,7 @@ export class ProductsAdminComponent implements OnInit {
         response =>{
           if (response.product){
             console.log("borrado");
-            location.href="http://localhost:4200/productos-admin";
+            location.href="https://badianus-bbadd.web.app/productos-admin";
           }
         }
        )

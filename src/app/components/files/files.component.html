@@ -11,7 +11,8 @@
     <title>Badianus</title>
 </head>
 <body>
-    
+    	
+
 <section class="welcome">
    
     <div class="container pt-4" *ngIf="range" > 
@@ -35,19 +36,20 @@
                     <p>
                     <span class="text-danger" *ngIf="title.touched && !title.valid">El título es obligatorio</span>
                     <p>
-                    <input type="file" #url="ngModel" [(ngModel)]="file.url" name="url" placeholder="Subir Documento" (change)= "fileChangeEvent($event)" required>
+                    <input id="document" type="file" #url="ngModel" [(ngModel)]="file.url" name="url" placeholder="Subir Documento" (change)= "fileChangeEvent($event)" required>
                     <p>
                       <span class="text-danger" *ngIf="url.touched && !url.valid">El documento es obligatoria</span>
                     <p>
                     <input class ="btn btn-primary" type="submit" value="Añadir" [disabled]="!fileForm.form.valid">
-                
+                  
+                      
                 </div>
                 </form>
                 <div id="alert" class="alert alert-success" role="alert" *ngIf="status == 'success'">
-                    <strong>Listo!</strong> El testimonio se subio con éxito.
+                    <strong>Listo!</strong> El documento se subio con éxito.
                 </div>
                 <div class="alert alert-danger" role="alert" *ngIf="status == 'failed'">
-                    <strong>Oh no!</strong> El testimonio no se pudo subir.
+                    <strong>Oh no!</strong> El documento no se pudo subir.
                 </div>
                  
             </div>
@@ -60,9 +62,11 @@
       </div>
     
     <div class="container pt-4 pb-4">
+      
     <div class="list-group pt-2" *ngFor="let file of files" [attr.id]="file._id">
-        <a href="{{'http://localhost:3700/'+'file/get-file/'+file.url}}" *ngIf="file.url" class="list-group-item list-group-item-action"><i class="fas fa-download"></i>  {{file.title}}
+        <a href="transform({{file.url}})" *ngIf="file.url" class="list-group-item list-group-item-action"><fa-icon [icon]="faDownload"></fa-icon>  {{file.title}}
             <button *ngIf="range" (click)=deleteFile(file._id) class="float-right"><fa-icon [icon]="faTrash"></fa-icon></button></a>
+      
    
       </div>
     </div>

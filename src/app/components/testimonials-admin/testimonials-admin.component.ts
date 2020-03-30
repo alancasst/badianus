@@ -51,7 +51,7 @@ export class TestimonialsAdminComponent implements OnInit {
           setTimeout(function() {
           
             $('.alert').fadeOut('fast');
-            location.href="http://localhost:4200/testimonios-admin";
+            location.href="https://badianus-bbadd.web.app/testimonios-admin";
         }, 1500);
        
          
@@ -94,7 +94,7 @@ export class TestimonialsAdminComponent implements OnInit {
       response =>{
         if (response.testimonial){
           console.log("borrado");
-          location.href="http://localhost:4200/testimonios-admin";
+          location.href="https://badianus-bbadd.web.app/testimonios-admin";
         }
       }
      )

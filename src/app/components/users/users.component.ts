@@ -82,7 +82,7 @@ export class UsersComponent implements OnInit {
         response =>{
           if (response.user){
             console.log("borrado");
-            location.href="http://localhost:4200/usuarios";
+            location.href="https://badianus-bbadd.web.app/usuarios";
           }
         }
        )
@@ -100,7 +100,7 @@ export class UsersComponent implements OnInit {
             setTimeout(function() {
             
               $('.alert').fadeOut('fast');
-              location.href="http://localhost:4200/usuarios";
+              location.href="https://badianus-bbadd.web.app/usuarios";
           }, 1500);
           
         }else{

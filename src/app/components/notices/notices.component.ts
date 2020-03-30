@@ -57,7 +57,7 @@ export class NoticesComponent implements OnInit {
             setTimeout(function() {
             
               $('.alert').fadeOut('fast');
-              location.href="http://localhost:4200/avisos";
+              location.href="https://badianus-bbadd.web.app/avisos";
           }, 1500);
           
         }else{
@@ -92,7 +92,7 @@ export class NoticesComponent implements OnInit {
         response =>{
           if (response.notice){
             console.log("borrado");
-            location.href="http://localhost:4200/avisos";
+            location.href="https://badianus-bbadd.web.app/avisos";
           }
         }
        )

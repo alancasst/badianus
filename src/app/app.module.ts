@@ -30,6 +30,12 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { FooterComponent } from './components/footer/footer.component';
 import { EditComponent } from './components/edit/edit.component';
 import { ajax} from "jquery";
+import { AngularFireStorageModule} from "@angular/fire/storage";
+import { environment} from "../environments/environment";
+import { AngularFireModule } from '@angular/fire';
+
+
+
 
 
 @NgModule({
@@ -63,7 +69,9 @@ import { ajax} from "jquery";
     OwlModule,
     NgxPaginationModule,
     BrowserAnimationsModule,
-    CarouselModule 
+    CarouselModule ,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebase)
     
   ],
   providers: [

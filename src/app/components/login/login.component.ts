@@ -40,12 +40,14 @@ export class LoginComponent implements OnInit {
       password: this.password
     }
     this.authService.authenticateUser(user).subscribe( data =>{
+           // @ts-ignore
       if(data.success){
 
+             // @ts-ignore
           this.authService.storeUserData(data.token, data.user);
           
 
-          location.href="http://localhost:4200/avisos";
+          location.href="https://badianus-bbadd.web.app/avisos";
        
       }
       else {
