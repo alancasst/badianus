@@ -17,6 +17,7 @@ import { OwlModule } from 'ngx-owl-carousel';
 import { UsersComponent } from './components/users/users.component';
 import { NoticesComponent } from './components/notices/notices.component';
 import { FilesComponent } from './components/files/files.component';
+import { CustomAnchorComponent } from './components/files/custom-anchor.component';
 import { ProductsAdminComponent } from './components/products-admin/products-admin.component';
 import { DetailComponent } from './components/detail/detail.component';
 import { ReviewsComponent } from './components/reviews/reviews.component'; 
@@ -34,10 +35,6 @@ import { AngularFireStorageModule} from "@angular/fire/storage";
 import { environment} from "../environments/environment";
 import { AngularFireModule } from '@angular/fire';
 
-
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +47,7 @@ import { AngularFireModule } from '@angular/fire';
     UsersComponent,
     NoticesComponent,
     FilesComponent,
+    CustomAnchorComponent,
     ProductsAdminComponent,
     DetailComponent,
     ReviewsComponent,
@@ -72,7 +70,6 @@ import { AngularFireModule } from '@angular/fire';
     CarouselModule ,
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebase)
-    
   ],
   providers: [
     appRoutingProviders,

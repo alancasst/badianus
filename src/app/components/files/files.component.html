@@ -1,80 +1,71 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-
-
-    <title>Badianus</title>
-</head>
-<body>
-    	
-
 <section class="welcome">
-   
-    <div class="container pt-4" *ngIf="range" > 
-        <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModalScrollable">Añadir Documento</button>
-    </div>
-          
-         <!-- Modal -->
-      <div class="modal" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalCenteredLabel">Añadir Testimonio</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+  <div class="container pt-4" *ngIf="range">
+    <button type="button" class="btn btn-outline-success" data-toggle="modal"
+      data-target="#exampleModalScrollable">Añadir Documento</button>
+  </div>
+  <!-- Modal -->
+  <div class="modal" id="exampleModalScrollable" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalScrollableLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenteredLabel">Añadir Testimonio</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form #fileForm="ngForm" (ngSubmit)="onSubmit(fileForm)">
+            <div class="container">
+              <input type="text" class="form-control" #title="ngModel" [(ngModel)]="file.title" placeholder="Título"
+                name="title" required>
+              <p>
+                <span class="text-danger" *ngIf="title.touched && !title.valid">El título es obligatorio</span>
+              </p>
+              <p>
+                <input id="document" type="file" #url="ngModel" [(ngModel)]="file.url" name="url"
+                  placeholder="Subir Documento" (change)="fileChangeEvent($event)" required>
+              </p>
+              <p>
+                <span class="text-danger" *ngIf="url.touched && !url.valid">El documento es obligatoria</span>
+              </p>
+              <p>
+                <input class="btn btn-primary" type="submit" value="Añadir" [disabled]="!fileForm.form.valid">
+              </p>
             </div>
-            <div class="modal-body">
-                <form #fileForm="ngForm" (ngSubmit)="onSubmit(fileForm)">
-                    <div class="container">
-                    <input type="text" class="form-control" #title="ngModel" [(ngModel)]="file.title" placeholder="Título" name ="title" required>
-                    <p>
-                    <span class="text-danger" *ngIf="title.touched && !title.valid">El título es obligatorio</span>
-                    <p>
-                    <input id="document" type="file" #url="ngModel" [(ngModel)]="file.url" name="url" placeholder="Subir Documento" (change)= "fileChangeEvent($event)" required>
-                    <p>
-                      <span class="text-danger" *ngIf="url.touched && !url.valid">El documento es obligatoria</span>
-                    <p>
-                    <input class ="btn btn-primary" type="submit" value="Añadir" [disabled]="!fileForm.form.valid">
-                  
-                      
-                </div>
-                </form>
-                <div id="alert" class="alert alert-success" role="alert" *ngIf="status == 'success'">
-                    <strong>Listo!</strong> El documento se subio con éxito.
-                </div>
-                <div class="alert alert-danger" role="alert" *ngIf="status == 'failed'">
-                    <strong>Oh no!</strong> El documento no se pudo subir.
-                </div>
-                 
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Regresar</button>
-            
-            </div>
+          </form>
+          <div id="alert" class="alert alert-success" role="alert" *ngIf="status == 'success'">
+            <strong>Listo!</strong> El documento se subio con éxito.
+          </div>
+          <div class="alert alert-danger" role="alert" *ngIf="status == 'failed'">
+            <strong>Oh no!</strong> El documento no se pudo subir.
           </div>
         </div>
-      </div>
-    
-    <div class="container pt-4 pb-4">
-      
-    <div class="list-group pt-2" *ngFor="let file of files" [attr.id]="file._id">
-        <a href="transform({{file.url}})" *ngIf="file.url" class="list-group-item list-group-item-action"><fa-icon [icon]="faDownload"></fa-icon>  {{file.title}}
-            <button *ngIf="range" (click)=deleteFile(file._id) class="float-right"><fa-icon [icon]="faTrash"></fa-icon></button></a>
-      
-   
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Regresar</button>
+        </div>
       </div>
     </div>
-
-
-
-
-
-
-    
+  </div>
+  <div class="container pt-4 pb-4">
+    <div class="list-group pt-2" *ngFor="let file of files" [attr.id]="file._id">
+      <a
+        *ngIf="file.url"
+        target="_blank"
+        rel="noopener"
+        class="list-group-item list-group-item-action"
+        [href]="quitarComillasDobles(file.url)">
+        <fa-icon [icon]="faDownload"></fa-icon>
+        {{file.title}}
+        <button
+        *ngIf="range"
+        (click)=deleteFile(file._id)
+        class="float-right">
+          <fa-icon [icon]="faTrash"></fa-icon>
+        </button>
+      </a>
+      
+    </div>
+  </div>
+</section>
 <!--Carga de archivos JS-->

@@ -150,4 +150,9 @@ transform(value: string) {
         
       }
 
+      public quitarComillasDobles(originalString: string) : string {
+        return originalString
+                .replace('"', '')
+                .replace('"', '');
+      }
 }
